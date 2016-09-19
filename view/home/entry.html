@@ -1,0 +1,105 @@
+<div class="homeEntry">
+    <div>
+    <!-- 测试分支 -->
+        <div class="homeStaticContainer">
+            <div class="staticItemList">
+                <div class="staticItem">
+                    <div class="title">我服务企业数</div>
+                    <div class="num">100</div>
+                    <div class="des">三月新增企业数 8</div>
+                </div>
+                <div class="staticItem">
+                    <div class="title">我服务雇员数</div>
+                    <div class="num">101</div>
+                    <div class="des">三月新增雇员数 212</div>
+                </div>
+                <div class="staticItem">
+                    <div class="title">我的服务目标</div>
+                    <div class="num">202</div>
+                    <div class="des">三月已完成目标 211</div>
+                </div>
+                <div class="staticItem">
+                    <div class="title">我的服务指数目标</div>
+                    <div class="num">222</div>
+                    <div class="des">三月服务指数 86</div>
+                </div>
+            </div>
+            <div class="avater">
+                <div class="homeicon">
+                    <img src="./asset/image/homeicon.png" alt="">
+                </div>
+                <div class="smlAvater">
+                    <img src="./asset/image/usericon.jpg" alt="">
+                    <drop-down></drop-down>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="entryItemList">
+        <div class="entryItem" ng-if="authority.btnComm">
+            <img src="./asset/image/entryCommunicate.png" alt="">
+            <div class="entryDes">
+                沟通管理
+            </div>
+        </div>
+        <div class="entryItem" ng-click="goProjectList()" ng-if="authority.btnSales">
+            <img src="./asset/image/entrySales.png" alt="">
+            <div class="entryDes">
+                销售管理
+            </div>
+        </div>
+        <div class="entryItem" ng-click="goCustomerList()" ng-if="authority.btnCustService">
+            <img src="./asset/image/entryClientService.png" alt="">
+            <div class="entryDes">
+                客服服务
+            </div>
+        </div>
+        <div class="entryItem" ng-click="goProductionMngList()" ng-if="authority.btnProd">
+            <img src="./asset/image/entryProductionMng.png" alt="">
+            <div class="entryDes">
+                产品管理
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="entryItemList">
+        <div class="entryItem" ng-click="goRegulationList()" ng-if="authority.btnRuleRepo">
+            <img src="./asset/image/entryRegulation.png" alt="">
+            <div class="entryDes">
+                规则仓库
+            </div>
+        </div>
+        <div class="entryItem" ng-click="goProductionList()" ng-if="authority.btnProdRepo">
+            <img src="./asset/image/entryProduction.png" alt="">
+            <div class="entryDes">
+                产品仓库
+            </div>
+        </div>
+        <div class="entryItem" ng-if="authority.btnNegativeList">
+            <img src="./asset/image/entryNagative.png" alt="">
+            <div class="entryDes">
+                负面清单
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</div>
+</div>
+<section class="column" ng-controller="menu" ng-show="showSide">
+
+    <div style=" height:100%; float:left;width: 550px; border-right:1px solid #dcdcdc">
+        <slide-content></slide-content>
+    </div>
+     
+     
+     <div id="content-1" style="width: 245px;overflow: hidden;float:left;height:100%;">
+        <slide-list></slide-list>
+     </div>
+     
+     
+    <span class="glyphicon glyphicon-menu-right toggle-show" ng-click="method.show()" ng-style="{ color:attrs.color }"></span>
+       
+</section>
+<div class="mask" ng-show="showSide"></div>
+<!-- 猫头鹰通知 -->
+<inform></inform>

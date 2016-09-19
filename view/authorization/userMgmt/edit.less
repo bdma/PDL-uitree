@@ -1,0 +1,145 @@
+#rolePopupIcon {
+  background-image: url(../image/databutton.png);
+}
+
+#postPopupIcon {
+  background-image: url(../image/databutton.png);
+}
+
+#departPopupIcon {
+  background-image: url(../image/databutton.png);
+}
+
+.tag-input-empty {
+  margin-left: -12px;
+  height: 30px;
+}
+
+.tag-input-not-empty {
+  margin-left: -12px;
+}
+
+#userMgmt-popup {
+  .left-part {
+    float: left;
+    width: 50%;
+    padding-right: 1%;
+    border-right: 1px solid #eeeeee;
+    .tree-switch {
+      float: left;
+      margin-left: 40px;
+      margin-top: 4px;
+    }
+    .tree {
+      width: 100%;
+      margin-top: 40px;
+      padding-left: 2%;
+      padding-right: 2%;
+      overflow: auto;
+      padding-bottom: 8px
+    }
+    .role-list {
+      margin-top: 50px;
+      overflow: auto;
+      padding-bottom: 8px;
+      padding-top: 8px;
+      .role-item-normal {
+        text-align: center;
+        margin: 0 8%;
+        border-top: 1px solid #dddddd;
+        padding: 8px 0;
+        &:hover {
+          box-shadow: 2px 2px 5px #888888;
+        }
+        img {
+          position: absolute;
+          right: -8px;
+          top: -8px;
+          display: inherit;
+        }
+      }
+      .role-item-selected {
+        position: relative;
+        text-align: center;
+        margin: 0 8%;
+        border: 1px solid #3BC0C3;
+        color: #3BC0C3;
+        background-color: #fbfbfc;
+        padding: 8px 0;
+        img {
+          position: absolute;
+          right: -8px;
+          top: -8px;
+          display: inherit;
+        }
+      }
+    }
+    .role-search {
+      width: 80%;
+      text-align: center;
+      float: left;
+      position: relative;
+      input {
+        height: 30px;
+        width: 100%;
+        border: 1px solid #dddddd;
+        border-radius: 20px;
+        padding: 0px 15px;
+        outline: none;
+        margin-left: 40px;
+      }
+      img {
+        position: absolute;
+        top: 0px;
+        right: -35px;
+        height: 13px;
+        margin: 8.5px;
+        z-index: 5;
+        cursor: pointer;
+      }
+    }
+    .card-table {
+      width: 100%;
+      margin-top: 40px;
+      padding-left: 2%;
+      padding-right: 2%;
+      overflow: auto;
+      padding-bottom: 8px
+    }
+  }
+  .right-part {
+    float: left;
+    width: 50%;
+    .right-part-title {
+      height: 30px;
+      padding-left: 30px;
+      padding-top: 10px;
+    }
+    .deletable-tag {
+      width: 100%;
+      margin-top: 20px;
+      padding-left: 2%;
+      padding-right: 2%;
+      overflow: auto;
+      padding-bottom: 8px
+    }
+  }
+  .popup-header {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    background-color: #ffffff;
+  }
+  .popup-footer {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    background-color: #f7faf9;
+  }
+}

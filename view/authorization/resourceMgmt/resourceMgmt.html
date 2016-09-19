@@ -1,0 +1,32 @@
+<div style="width: 70%; float: left;">
+    <div class="ui-box">
+        <div class="ui-box-head">资源列表</div>
+        <div class="ui-box-body" style="border-right: 1px solid #dcdcdc">
+        	<div ron-carousel speed='20' carousel="resourceCarousel" carousel-style="position: absolute;width: 97%;height: 42px;overflow: hidden;left: 0;background: #fff;top: 5px;padding: 0 14px;">
+                    <a ng-click="findResourceTree(resource)" ng-class="{active:resource.resourceTypeId==currentResourceId}" ng-repeat="resource in resources">{{resource.resourceTypeName}}</a>
+            </div>
+            <div class="ui-box-body-center" style="padding-top:42px;">
+                <ui-tree tree-data="resourceTreeData" conf="resourceConf" clickitem="clickResource(item)" selected-tree="selectedResource"></ui-tree>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="width: 30%; float: left;">
+    <div class="ui-box ui-box-btn">
+        <div class="ui-box-head">待分配资源</div>
+        <div class="ui-box-body">
+            <div class="ui-box-body-center">
+                <div style="padding:20px;">
+                <ul class="checkul">
+                	<li ng-if="!checkItems || checkItems.length<1">暂无可分配资源</li>
+                	<li ng-click="checkThisItem(item)" ng-if="checkItems&&checkItems.length>=1" ng-repeat="item in checkItems">
+                		<span class='uiTreeCheck' ng-class='{uiTreeUnChecked:!item.checked,uiTreeCheckedAll:item.checked}'></span>{{item.resourceName}}
+                	</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+        <div class="ui-box-body-btn"><button class="btn btn-primary btn-sm" ng-click="submitItemList()">提交</button></div>
+    </div>
+</div>
+</div>

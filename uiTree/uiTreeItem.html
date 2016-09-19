@@ -1,0 +1,13 @@
+
+        <div draggable="{{$uiTreeItem.$$isDrag}}" ng-dragstart="dragstart($event,$uiTreeItem)" ng-dragover="dragover($uiTreeItem,$event)" ng-drop="drop($event,$uiTreeItem)" ng-dragleave="dragleave($uiTreeItem,$event)"  ng-dragenter="dragenter($uiTreeItem,$event)">
+            <span class='uiTreeCheck' ng-if="(conf.multipleType == 'cascaded')||((conf.multipleType == 'check'||conf.multipleType == 'radio')&&!$uiTreeItem.$$isFolder)" ng-class='{uiTreeUnChecked:!$uiTreeItem.$$status||$uiTreeItem.$$status=="unchecked",uiTreeCheckedAll:$uiTreeItem.$$status=="checked",uiTreeUnCheckedHalf:$uiTreeItem.$$status=="halfchecked"}' ng-click='selectedItem(conf.multipleType,$uiTreeItem,$event,$parent,$index)'></span>
+            <span class="uiTreeIco" ng-class="{uiTreeIco1:!$uiTreeItem.$$isFolder,uiTreeIco2:$uiTreeItem.$$isFolder,current:!$uiTreeItem.$$isOpen}" ng-click='slideItem($event,$uiTreeItem)'></span>
+            <span class='uiTreeName' ng-class="{active:$uiTreeItem.$$active}" ng-click='activeitem(conf.multiClick,$event,$uiTreeItem)'>{{$uiTreeItem[conf.label]}}<i></i></span>
+            <span class='uiTreeNameEdit' ng-click='stopPro($event)' style='display: none'><input type="text" ng-keypress="enteradd($event)" ng-model='$uiTreeItem[conf.label]' /></span>
+            <span class='addChildNode' ng-if='conf.addChildNode && $uiTreeItem.$$addChildNode!=-1' ng-click='addChildNodeFn($uiTreeItem)'></span>
+            <span class='editNode' ng-if='conf.editNode' ng-click='editNodeFn($uiTreeItem,$event)'></span>
+            <span class='deleteNode' ng-if='conf.deleteNode' ng-click='deleteNodeFn($uiTreeItem,$index)'></span>
+        </div>
+        <ul ng-class="{treehide:!$uiTreeItem.$$isOpen}">
+            <li ng-repeat="$uiTreeItem in $uiTreeItem.children track by $index" ng-include="'./component/commonView/uiTree/uiTreeItem.html'" ng-if="$uiTreeItem.$$isShow"></li>
+        </ul>

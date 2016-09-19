@@ -1,0 +1,149 @@
+.span_person{ cursor:default; padding:2px 10px; margin:5px; display:inline-block; position:relative; border-radius:3px; color:@prettyBlue; font-size:12px; border:1px solid @prettyBlue;
+width: 100px;
+    height: 26px;
+    line-height: 24px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+        font{
+            display: block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+        }
+    }
+.org_selectedRoles{
+    .span_person{ overflow: visible; width: 150px;}
+}
+.org_selectedUsers{
+    .span_person{ overflow: visible; width: auto;}
+}
+.span_person i{
+	width:15px;
+	height:15px;
+	background:url(../image/contact_delete.png);
+	display:none;
+	position:absolute;
+	right:-7px;
+	top:-7px;
+	cursor:pointer;
+}
+.span_person:hover{
+	
+}
+.span_person:hover i{
+	display:block;
+}
+.ui-box-body-head{text-align: right;margin-bottom:20px;
+span{cursor: pointer; padding-left:20px; background: url(../image/contact_new.png) left center no-repeat;}
+}
+.uiInput{
+    border-radius: 0;
+    box-shadow: none;
+}
+.uiInput2{
+	border-radius: 20px;
+    box-shadow: none;
+    padding:0 15px;
+}
+.org_userList ul{ padding:20px 0px;}
+.org_userList ul li{width: 150px;
+    height: 50px;
+    border: 1px solid #dcdcdc;
+    color: #999;
+    background: #f9f9f9;
+    float: left;
+    cursor:pointer;
+    padding:5px 0px;
+    text-align: center;
+    margin: 10px;
+    position:relative;
+    p{ margin:0; font-size:14px; color:#000;white-space: nowrap; display:block; overflow: hidden; text-overflow:ellipsis; width: 100%;}
+span{ display: block; width: 100%;white-space: nowrap;text-overflow:ellipsis; overflow: hidden;}
+}
+.org_userList ul li.active{
+	    border: 1px solid #3BC0C3;
+}
+.org_userList ul li i{ display:none; position:absolute; right:-9px; top:-9px; width:17px; height:18px; background:url(../image/check.png);}
+.org_userList ul li.active i{display:block;}
+.searchUser_btn{ width:19px; height:18px; background:url(../image/icon_project_search_big.png); position:absolute;right: 27px;top: 8px;}
+
+.span_person2{
+	height: 40px;
+    border: 1px solid #dcdcdc;
+    color: #333;
+    display:inline-block;
+    font-size:14px;
+    background: #f9f9f9;
+    line-height:40px;
+    white-space: nowrap;
+    padding:0 15px;
+    cursor:pointer;
+    text-align: center;
+    margin: 10px;
+    position:relative;
+}
+.span_person2 i{ display:none; position:absolute; right:-9px; top:-9px; width:17px; height:18px; background:url(../image/check.png);}
+.span_person2.active{ border:1px solid @prettyBlue;}
+.span_person2.active i{ display:block;}
+.org_roleList li{position:relative; font-size:14px; border-bottom:1px solid #dcdcdc; text-align:center;}
+.org_roleList li p{ cursor:pointer; line-height:40px; height:40px; margin:0;}
+.org_roleList li p:hover{ background:#eee; color:@prettyBlue;}
+.org_roleList li i{ display:none;  position:absolute; right:-9px; top:-9px; width:17px; height:18px; background:url(../image/check.png);}
+.org_roleList li.active{ border:1px solid @prettyBlue;}
+.org_roleList li.active p{background:#eee; color:@prettyBlue;}
+.org_roleList li.active i{ display:inline-block;}
+.org_roleList li div.org_role{ position:relative; padding-top:50px; background:#fff; display:none;}
+.org_rolefilterList ul{ padding:20px 0px;}
+.org_rolefilterList ul li{width: 150px;
+    height: 50px;
+    line-height:50px;
+    border: 1px solid #dcdcdc;
+    color: #999;
+    background: #f9f9f9;
+    float: left;
+    cursor:pointer;
+    text-align: center;
+    margin: 10px;
+    position:relative;
+    span{
+    font-size:14px;
+    color:#000;
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;}}
+.org_rolefilterList ul li.active{
+        border: 1px solid #3BC0C3;
+}
+.org_rolefilterList ul li i{ display:none; position:absolute; right:-9px; top:-9px; width:17px; height:18px; background:url(../image/check.png);}
+.org_rolefilterList ul li.active i{display:block;}
+
+.rbacList tr{ border-bottom:1px solid #dcdcdc;}
+.rbacList tr:last-child{border:none;}
+.rbacList_right{padding:10px 0px; line-height:24px;}
+.rbacList_right span{ float:left; width:33%; text-align:center; color:#000;}
+.rbacList_left{ width:50px; padding:10px 0px; line-height:24px; color:#777;}
+.searchUser_message{ position:absolute;
+    right: 25px;
+    top: -35px;
+    border: 1px solid #dcdcdc;
+    padding: 3px 10px;
+    border-radius: 4px;display:none;}
+.searchUser_message:after{content: "﹀";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    margin-left: -5px;
+    color: #dcdcdc;
+    background: #fff;
+    height: 7px;
+    width: 12px;
+    text-align: center;}
+
+
+

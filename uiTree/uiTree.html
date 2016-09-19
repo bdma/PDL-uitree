@@ -1,0 +1,16 @@
+<div class="ui-tree">
+    <ul class="ui-tree-root">
+        <li ng-repeat='$uiTreeItem in tree track by $index' ng-include="'./component/commonView/uiTree/uiTreeItem.html'" ng-if="$uiTreeItem.$$isShow">
+        	<!-- <div>
+                <span class='uiTreeCheck' ng-if="(conf.multipleType == 'cascaded')||((conf.multipleType == 'check'||conf.multipleType == 'radio')&&uiTreeItem.children.length<1)" ng-class='{uiTreeUnChecked:!uiTreeItem.status,uiTreeCheckedAll:uiTreeItem.status=="checked",uiTreeUnCheckedHalf:uiTreeItem.status=="halfchecked"}' ng-click='selectedItem(conf.multipleType,uiTreeItem,$parent,$index)'></span>
+                <span class="uiTreeIco" ng-class="{uiTreeIco1:uiTreeItem.children.length<1,uiTreeIco2:uiTreeItem.children.length>0,current:!conf.isOpen}" ng-click='slideItem($event)'></span>
+                <span class='uiTreeName' ng-click='activeitem(conf.multiClick,$event,uiTreeItem)'>{{uiTreeItem[conf.label]}}</span>
+                <span class='uiTreeNameEdit' ng-click='stopPro($event)' style='display: none'><input type="text" ng-keypress="enteradd($event)" ng-model='uiTreeItem[conf.label]' ng-if='conf.editNode' /></span>
+                <span class='addChildNode' ng-if='conf.addChildNode' ng-click='addChildNodeFn(uiTreeItem)'></span>
+                <span class='editNode' ng-if='conf.editNode' ng-click='editNodeFn($event)'></span>
+                <span class='deleteNode' ng-if='conf.deleteNode' ng-click='deleteNodeFn($index)'></span>
+            </div>
+            <ui-tree-item conf='conf' clickitems='clickitems' item='uiTreeItem.children' tree='tree' treelength='treelength' selected-tree='selectedTree' clickitem='clickitemparent(item)'></ui-tree-item> -->
+        </li>
+    </ul>
+</div>

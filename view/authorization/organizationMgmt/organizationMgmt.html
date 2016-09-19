@@ -1,0 +1,114 @@
+<div class="col-md-6">
+    <div class="ui-box ui-box-btn">
+        <div class="ui-box-head" style="line-height:18px;"><span class="text_span active" ng-click="openOrgTree($event)"><font>全部展开</font></span><span class="text_span" ng-click="closeOrgTree($event)"><font>全部闭合</font></span></div>
+        <div class="ui-box-body">
+            <div class="ui-box-body-center">
+                <ui-tree tree-data="orgData" conf="orgConf" clickitem="clickOrg(item)" selected-tree="selectedOrg"></ui-tree>
+            </div>
+            <div ng-dialog="updateOrgDialog" ng-dialog-title="新增组织" ng-dialog-style="width:400px; height:230px;">
+                <p class="form-inline">
+                    <label>类型：</label>
+                    <input type="radio" value="1" name="depart" ng-model="tempnode.type" ng-disabled="tempnode.set=='edit'" style="vertical-align: top;margin: 2px 10px 0px 25px;">部门
+                    <input type="radio" value="2" name="depart" ng-model="tempnode.type" ng-disabled="tempnode.set=='edit'" style="vertical-align: top;margin: 2px 10px 0px 25px;">岗位</p>
+                <p class="form-inline">
+                    <label>名称：</label>
+                    <input type="text" class="form-control uiInput" maxlength="15" ng-model="tempnode.name" />
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6" style="border-left:1px solid #dcdcdc;">
+    <div class="ui-box ui-box-btn">
+        <div class="ui-box-head" style="line-height:18px;"><span class="text_span" ng-class="{active:current==1}" ng-if="selectNode.position" ng-click="showBox(1)"><font>员工列表</font></span><span ng-if="selectNode.position" class="text_span" ng-class="{active:current==2}" ng-click="showBox(2)"><font>角色</font></span><span class="text_span active" ng-if="!selectNode.position"><font>汇报关系</font></span></div>
+        <div class="ui-box-body" ng-if="selectNode.position" ng-show="current==1" style="background: none;">
+            <div class="ui-box-body-head"><span ng-click="addUser()">新增</span></div>
+            <div class="org_eployee ui-box-body-center" ng-if="selectNode.position">
+                <span class="span_person" title="{{item.resourceName}}" ng-repeat="item in userList track by $index">{{item.resourceName}}</span>
+                <p style="text-align: center;>" ng-if="!userList || userList.length<1">暂无数据</p>
+                <div ng-dialog="addUserDialog" ng-dialog-title="新增员工" ng-dialog-style="width:80%; height:80%;min-width:500px;max-width:800px;">
+                    <div class="col-md-6" style="height:100%;border-right:1px solid #dcdcdc;">
+                        <p style="position: absolute;padding-right:20px; width: 100%; left:0;top:0;">
+                            <input type="text" class="form-control uiInput2" placeholder="请输入员工姓名" ng-keypress="enterSearch($event)" ng-model="queryForm.searchUserText" /><i class="searchUser_btn" ng-click="searchUserFn($event)"></i><span class="searchUser_message">请输入员工姓名搜索</span></p>
+                        <div class="org_userList" style="height:100%;padding-top:60px;">
+                            <ul style="overflow: auto;height:100%;margin:0;">
+                                <li ng-repeat="item in userAllList" ng-class="{active:item.$$active}" title="{{item.displayName}}" ng-click="clickUserItem(item)"><p>{{item.displayName}}</p>
+                                    <span>{{item.userName}}</span><i></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="height:100%;">
+                        <h3 style="margin-top:0;font-size:16px;position:absolute; width: 100%;padding-left:10px; left:0;top:0;">已选员工</h3>
+                        <div style="height:100%; padding-top:50px">
+                            <div style="height: 100%; overflow: auto; padding-top:5px;" class="org_selectedUsers">
+                                <span class="span_person" ng-repeat="item in selectedUser track by $index">{{item.displayName}} {{item.userName}}<i ng-click="removeSelectedUser(item,$index)"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-box-body" ng-if="selectNode.position" ng-show="current==2" style="background: none;">
+            <div class="ui-box-body-head"><span ng-click="openRoleDialog()">绑定</span></div>
+            <div class="org_data ui-box-body-center" style="padding: 9px;">
+                <ul class="org_roleList">
+                    <li ng-repeat="role in roleData track by $index">
+                        <p ng-click="clickRole($event,role)">{{role.resourceName}}</p>
+                        <i></i>
+                        <div class="org_role">
+                            <div ron-carousel carouse="role.carouse" speed='20' carousel-style="position: absolute;width: 95%;height: 42px;overflow: hidden;left: 2.5%;background: #fff;top: 5px;padding: 0 14px;">
+                                <a ng-click="showRbac(role,$index)" ng-class="{active:$index==role.current}" ng-repeat="app in role.rbacData">{{app.displayName}}</a>
+                            </div>
+                            <div style="padding:10px 20px;" ng-show="role.current==$index" ng-repeat="app in role.rbacData">
+                            <table cellspacing="0" cellpadding="0" width="100%" border="0" class="rbacList">
+                                <tr>
+                                    <td class="rbacList_left" valign="top">按钮</td><td class="rbacList_right"><span ng-repeat="item in app.elements" ng-if="item.name.substr(0,3)=='btn'" ng-show="item.effect==1">{{item.displayName}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="rbacList_left" valign="top">区域</td><td class="rbacList_right"><span ng-repeat="item in app.elements" ng-if="item.name.substr(0,3)=='div'" ng-show="item.effect==1">{{item.displayName}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="rbacList_left" valign="top">字段</td><td class="rbacList_right"><span ng-repeat="item in app.elements" ng-if="item.name.substr(0,4)=='attr'" ng-show="item.effect==1">{{item.displayName}}</span></td>
+                                </tr>
+                            </table>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div ng-dialog="addRoleDialog" ng-dialog-title="绑定角色" ng-dialog-style="width:80%; height:80%;min-width:500px;max-width:800px;">
+                    <div class="col-md-6" style="height:100%;border-right:1px solid #dcdcdc;">
+                        <p style="position: absolute;padding-right:20px; width: 100%; left:0;top:0;">
+                            <input type="text" class="form-control uiInput2" placeholder="请输入角色名称" ng-model="roleFilter.roleName" /><i class="searchUser_btn"></i></p>
+                        <div class="org_rolefilterList" style="height:100%;padding-top:60px;">
+                            <ul style="overflow: auto;height:100%;margin:0;">
+                                <li ng-repeat="item in roleAllData|filter:roleFilter" ng-class="{active:item.$$active}" ng-click="clickRoleItem(item)" title="{{item.roleName}}"><span>{{item.roleName}}</span><i></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="height:100%;">
+                        <h3 style="margin-top:0;font-size:16px;position:absolute; width: 100%;padding-left:10px; left:0;top:0;">已选角色</h3>
+                        <div style="height:100%; padding-top:50px">
+                            <div style="height: 100%; overflow: auto; padding-top:5px;" class="org_selectedRoles">
+                                <span class="span_person" ng-repeat="item in roleSelectData track by $index" title="{{item.resourceName}}"><font>{{item.resourceName}}</font><i ng-click="removeSelectedRole(item,$index)"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-box-body" ng-if="!selectNode.position" style="background: none;">
+            <div class="ui-box-body-head"><span ng-click="setSenior()">配置</span></div>
+            <div class="org_eployee ui-box-body-center">
+                <p ng-if="!selectNode">请先选择组织</p>
+                <p ng-if="selectNode && selectNode.position">请选择组织节点</p>
+                <p ng-if="selectNode && !selectNode.position">当前组织：{{selectNode.name}}</p>
+                <p>部门管理岗：<span ng-if="selectNode.juniorMainPosition">{{selectNode.juniorMainPosition.name}}</span><span ng-if="!selectNode.juniorMainPosition">未分配</span></p>
+                <div ng-dialog="seniorDialog" ng-dialog-title="汇报关系" ng-dialog-style="width:500px; height:300px;">
+                    <span class="span_person2" ng-class="{active:$index == selectedSeniorIndex}" ng-repeat="item in seniorList track by $index" ng-click="selectedSenior(item,$index)">{{item.name}}<i></i></span>
+                    <p style="line-height:36px; font-size:14px;" ng-if="seniorList.length<1">暂无岗位可分配，请先给当前组织添加岗位。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

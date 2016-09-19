@@ -1,0 +1,396 @@
+.mAuthSidebar {
+  width: 220px;
+  height: 100%;
+  .backgroundWhite;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  .foldAll {
+    padding-left: 12px;
+    line-height: 60px;
+    height: 60px;
+    .hxMd;
+    .hxBold;
+  }
+  .mFoldBar {
+    .foldBarIcon {
+      width: 30%;
+      float: left;
+      box-sizing: content-box;
+      padding: 13px 0px 0px;
+      img {
+        height: @hxIconSize;
+
+        margin-left: 20px;
+      }
+    }
+    .foldBarDes {
+      .hxMd;
+      width: 70%;
+      float: left;
+      line-height: 48px;
+      margin-left: -15px;
+      .hand;
+    }
+    &:after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+}
+
+.mActive {
+  border-right: @prettyYellow 4px solid;
+  .backgroundDarkGray;
+}
+
+.authorizationContainer {
+  position: absolute;
+  top: 81px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  box-sizing: border-box;
+}
+
+.text_span {
+  cursor: pointer;
+  color: #fff;
+  font-size: 12px;
+  position: relative;
+  padding: 4px 10px;
+  margin: 0 5px;
+  background: #aaa;
+  border-radius: 3px;
+}
+.text_span font{ position: relative; z-index: 2;}
+.text_span.active {
+  background: @prettyBlue;
+  color: #fff;
+}
+
+.text_span.active:before {
+    content: "";
+    display: block;
+    position: absolute;
+    background: #3BC0C3;
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    left: 50%;
+    margin-left: -7px;
+    bottom: -3px;
+    transform: rotate(45deg);
+    z-index: 1;
+}
+.serviceLoading{
+    width:250px;
+    height:90px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin:-50px 0px 0px -100px;
+    z-index: 9999;
+    padding:20px;
+    p{ padding:5px; font-family: "MicroSoft YaHei";
+    line-height: 26px;
+    text-align: center; font-weight: bold;
+    color: #fff;
+    font-family: Arial;}
+}
+.serviceLoadingBg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    z-index: 9998;
+}
+.spinner {
+  margin: 0px auto;
+  height:50px;
+  text-align:center;
+}
+.spinner > div {
+  background-color: #3BC0C3;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+  animation: stretchdelay 1.2s infinite ease-in-out;
+}
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+.spinner .rect6 {
+  -webkit-animation-delay: -0.7s;
+  animation-delay: -0.7s;
+}
+.spinner .rect7 {
+  -webkit-animation-delay: -0.6s;
+  animation-delay: -0.6s;
+}
+.spinner .rect8 {
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+}
+.spinner .rect9 {
+  -webkit-animation-delay: -0.4s;
+  animation-delay: -0.4s;
+}
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) } 
+  20% { -webkit-transform: scaleY(1.0) }
+}
+@keyframes stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+
+/* 滚动条样式 */
+#authorization div::-webkit-scrollbar,
+#authorization ul::-webkit-scrollbar
+{
+    width: 6px;
+    height: 6px;
+}
+#authorization div::-webkit-scrollbar-track-piece,
+#authorization ul::-webkit-scrollbar-track-piece
+{
+    background-color: none;
+}
+#authorization div::-webkit-scrollbar-thumb:vertical,
+#authorization ul::-webkit-scrollbar-thumb:vertical
+{
+    height: 5px;
+    background-color: #ddd;
+    -webkit-border-radius: 6px;
+}
+#authorization div::-webkit-scrollbar-thumb:horizontal,
+#authorization ul::-webkit-scrollbar-thumb:horizontal
+{
+    width: 5px;
+    background-color: none;
+}
+
+
+
+#authorization{height:100%;}
+#authorization>div{height:100%;}
+.ui-box {
+    height:100%;
+    padding-top:34px;
+    position:relative;
+    .ui-box-head {
+        height: 34px;
+        line-height: 34px;
+        padding-left: 20px;
+        color: #666;
+        font-size: 16px;
+        font-family: 'Microsoft YaHei';
+        position:absolute;
+        left:0;
+        top:0;
+    }
+    .ui-box-body {
+        padding: 5px;
+        background:#fff;
+        height:100%;
+        position: relative;
+        .ui-box-body-center{
+            height:100%;overflow: auto;
+        }
+    }
+    .ui-box-body-btn{
+            position:absolute;
+            height:42px;
+            padding:5px;
+            border-top:1px solid #dfe5e7;
+            border-bottom:1px solid #dfe5e7;
+            border-right:1px solid #dfe5e7;
+            text-align:center;
+            bottom:0; left:0;
+            width:100%;
+            background:#f6f8f8;
+            .btn{
+                border:none; background:#f99b00;
+            }
+        }
+}
+.ui-box-btn{
+    padding-bottom:42px;
+}
+.ui-box-green {
+    border: 1px solid #1BBC9B;
+    .ui-box-head {
+        background: #1BBC9B;
+        color: #fff;
+    }
+}
+
+.ui-box-blue {
+    border: 1px solid #3BC0C3;
+    .ui-box-head {
+        background: #3BC0C3;
+        color: #fff;
+    }
+}
+
+.ui-box-navy {
+    border: 1px solid rgb(103, 128, 159);
+    .ui-box-head {
+        background: rgb(103, 128, 159);
+        color: #fff;
+    }
+}
+
+.ui-box-orange {
+    border: 1px solid #f99b00;
+    .ui-box-head {
+        background: #f99b00;
+        color: #fff;
+    }
+}
+
+.btn-submit-orange {
+    background-color: #f99b00;
+    border-color: #F99B00
+}
+.serviceLoading{
+    width:250px;
+    height:90px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin:-50px 0px 0px -100px;
+    z-index: 9999;
+    padding:20px;
+    p{ padding:5px; font-family: "MicroSoft YaHei";
+    line-height: 26px;
+    text-align: center; font-weight: bold;
+    color: #fff;
+    font-family: Arial;}
+}
+.serviceLoadingBg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    z-index: 9998;
+}
+.spinner {
+  margin: 0px auto;
+  height:50px;
+  text-align:center;
+}
+ 
+.spinner > div {
+  background-color: #3BC0C3;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+   
+  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+  animation: stretchdelay 1.2s infinite ease-in-out;
+}
+ 
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+ 
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+ 
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+ 
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+.spinner .rect6 {
+  -webkit-animation-delay: -0.7s;
+  animation-delay: -0.7s;
+}
+ 
+.spinner .rect7 {
+  -webkit-animation-delay: -0.6s;
+  animation-delay: -0.6s;
+}
+ 
+.spinner .rect8 {
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+}
+ 
+.spinner .rect9 {
+  -webkit-animation-delay: -0.4s;
+  animation-delay: -0.4s;
+}
+ 
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) } 
+  20% { -webkit-transform: scaleY(1.0) }
+}
+ 
+@keyframes stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+
+/* 滚动条样式 */
+#authorization div::-webkit-scrollbar
+{
+    width: 6px;
+    height: 6px;
+}
+#authorization div::-webkit-scrollbar-track-piece
+{
+    background-color: none;
+}
+#authorization div::-webkit-scrollbar-thumb:vertical
+{
+    height: 5px;
+    background-color: #ddd;
+    -webkit-border-radius: 6px;
+}
+#authorization div::-webkit-scrollbar-thumb:horizontal
+{
+    width: 5px;
+    background-color: none;
+}

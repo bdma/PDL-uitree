@@ -1,0 +1,59 @@
+<div id="privilege-user-detail">
+    <div class="list_title">
+        <div class="title">
+            用户信息
+        </div>
+        <div class="side">
+        </div>
+    </div>
+    <div class="basicInfoContent" relative-to="#homeClientDetail" container="#homeClientDetail">
+
+        <div class="basicInfoContent_list">
+            <div class="basicInfoContent_list_left" style="float: left;">
+                <div class="basicInfoContentWord word_left">用户名</div>
+                <div class="basicInfoContentWord word_right value">{{user.userName}}</div>
+            </div>
+            <div class="basicInfoContent_list_right" style="float: left;">
+                <div class="basicInfoContentWord word_left">姓名</div>
+                <div class="basicInfoContentWord word_right">{{user.displayName}}</div>
+            </div>
+        </div>
+        <div class="basicInfoContent_list">
+            <div class="basicInfoContent_list_left" style="float: left;">
+                <div class="basicInfoContentWord word_left">邮箱</div>
+                <div class="basicInfoContentWord word_right"><a href="Mailto:{{user.email}}">{{user.email}}</a></div>
+            </div>
+            <div class="basicInfoContent_list_right" style="float: left;">
+                <div class="basicInfoContent_list_left" style="width:100%">
+                    <div class="basicInfoContentWord word_left">部门</div>
+                    <div class="basicInfoContentWord word_right">{{user.department.name}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="basicInfoContent_list" style="height:auto;">
+            <div class="basicInfoContent_list_left" style="width:100%;height:auto;">
+                <div class="word_left">岗位</div>
+                <div class="word_right" style="width:90%;line-height: 30px; padding-top: 5px;padding-bottom:5px">
+                    <deletable-tag selected-map="selectedPostsMap" tag-margin-left="7px" tag-margin-top="3px" tag-padding="0px 15px"></deletable-tag>
+                </div>
+            </div>
+        </div>
+        <div class="basicInfoContent_list" style="height:auto">
+            <div class="basicInfoContent_list_left" style="width:100%;height:auto">
+                <div class="word_left">角色</div>
+                <div class="word_right" style="width:90%;line-height: 30px; padding-top: 5px;padding-bottom:5px">
+                    <deletable-tag selected-map="selectedRolesMap" tag-margin-left="7px" tag-margin-top="3px" tag-padding="0px 15px"></deletable-tag>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="foot" style="margin-top: 15px;text-align: center">
+        <button class="hxButton backgroundYellow hxWhite" ng-click="goEdit()">编 辑</button>
+        <button class="hxButton backgroundRed hxWhite" style="margin-left: 70px" ng-click="disable()">注销用户</button>
+    </div>
+
+</div>
+
+

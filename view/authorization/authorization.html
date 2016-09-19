@@ -1,0 +1,14 @@
+<div class="homeClientDetailContainer">
+    <div class="ciichomebar">
+        <ciic-homebar>
+            <span style="line-height: 80px; margin-left: 40px; font-size: 20px">权限管理</span>
+        </ciic-homebar>
+    </div>
+
+    <div class="authorizationContainer">
+        <left-sidebar sidebar-data="authCategory" on-click="onClick(item)" selected-item-name="selectedItemName"></left-sidebar>
+        <div style="padding: 15px 45px;overflow: auto;height: 100%;margin-left:190px;">
+            <div id="authorization" ui-view="authorization"></div>
+        </div>
+    </div>
+</div>

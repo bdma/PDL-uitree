@@ -1,0 +1,13 @@
+logs/*
+!.gitkeep
+node_modules/
+bower_components/
+tmp
+.DS_Store
+.idea
+jsconfig.json
+app/asset/less/style.css
+.vscode/
+/app/start_web.bat
+npm-debug.log
+/asset/less/style.css

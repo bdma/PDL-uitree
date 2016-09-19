@@ -1,0 +1,65 @@
+<div id="userMgmt">
+    <div class="list_title">
+        <div class="title">
+            用户列表
+        </div>
+        <div style="float: left; height: 38px;line-height: 38px; padding-left: 10px;">
+            <span style="color: #999999">(共{{validCount}}个有效用户)</span>
+        </div>
+
+        <div class="side">
+            <div class="add hand" ng-click="addUser()">
+                <img src="./asset/image/contact_new.png" alt="">新增
+            </div>
+        </div>
+    </div>
+
+    <div class="hxTable">
+        <table-header columns="userMgmtColumns" on-search="onSearch($condtions,$columnIndex)"></table-header>
+        <div class="hxTRow" ng-repeat="user in displayUser track by $index">
+            <div class="hxCell hxBlue hand" ng-click="goDetail(user.userName)" style="width:15%">
+                {{user.userName}}
+            </div>
+            <div class="hxCell" style="width:15%">
+                {{user.displayName}}
+            </div>
+            <div class="hxCell" style="width:25%">
+                {{user.roles|arraytostring:'roleName'}}
+            </div>
+            <div class="hxCell" style="width:25%">
+                {{user.organizations|arraytostring:'name'}}
+            </div>
+            <div class="hxCell" style="width:12%">
+                {{user.department.name}}
+            </div>
+            <div class="hxCell" style="width:8%;position: relative;">
+                <img ng-click="showPermissionSet(user)" style="position: absolute; left: 20%;top: 10px" src="./asset/image/access.png" title="查看权限集">
+                <img ng-click="showPermissionList(user)" style="position: absolute; right: 20%;top: 10px" src="./asset/image/access02.png" title="查看数据功能权限">
+            </div>
+        </div>
+    </div>
+
+    <popup id="userMgmt-popup" show="popupShow" ptitle={{popupTitle}}>
+        <permission-list-popup ng-if="popupType=='list'" roles="currentUser.roles"></permission-list-popup>
+        <permission-set-popup ng-if="popupType=='set'" user-name="currentUser.userName"></permission-set-popup>
+    </popup>
+
+
+    <load-more loadmore="loadmore()" active="loading" ng-if="hasMore"></load-more>
+    <!--列表分页-->
+    <div class="loadMore" ng-if="hasMore">
+        <a href="" ng-click="loadMoreUser()">
+            <span class="span1"></span>
+            <span class="span2"></span>
+            <span class="span3"></span> 加载更多信息
+        </a>
+    </div>
+    <div class="loadMore" ng-if="!hasMore">
+        <a href="" style="cursor:default;">
+            <span class="span1"></span>
+            <span class="span2"></span>
+            <span class="span3"></span> 没有更多信息啦
+        </a>
+    </div>
+
+</div>

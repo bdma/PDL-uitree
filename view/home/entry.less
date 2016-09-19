@@ -1,0 +1,90 @@
+@directionSize: @smlAvaterSize;
+@homeIconSize: 20px;
+.homeEntry {
+    .homeStaticContainer {
+        .backgroundGray;
+        margin: auto;
+        text-align: center;
+        .border;
+        border-width: 0px 0px 1px;
+        position: relative;
+        height: 239px;
+        .staticItemList {
+            margin-top: 60px;
+            margin-bottom: 60px;
+            display: inline-block;
+            padding-left: 150px;
+            .staticItem {
+                text-align: center;
+                padding-right: 25px;
+                padding-left: 25px;
+                cursor: pointer;
+                display: inline-block;
+                .title {
+                    font-size: 18px;
+                }
+                .num {
+                    font-size: 48px;
+                    font-weight: bold;
+                }
+                .des {
+                    font-size: @normlFontSize;
+                }
+            }
+        }
+        .avater {
+            float: right;
+            height: @homeClientDetailTopbarHeight;
+            margin-right: @bigMargin+@normalMargin;
+            margin-top: 13px;
+            .homeicon {
+                .backgroundBlue;
+                width: @directionSize;
+                height: @directionSize;
+                border-radius: @directionSize/2;
+                overflow: hidden;
+                float: left;
+                text-align: center;
+                margin-right: @normalMargin;
+                cursor: pointer;
+                img {
+                    width: @homeIconSize;
+                    height: @homeIconSize;
+                    margin-top: (@directionSize - @homeIconSize)/2;
+                }
+            }
+            .smlAvater {
+                display: inline-block;
+                float: left;
+            }
+            &:after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+        }
+    }
+
+    .entryItemList {
+        width: 746px;
+        margin: 0 auto;
+        padding-left: 40px;
+        .entryItem {
+            text-align: center;
+            cursor: pointer;
+            float: left;
+            margin-left: 35px;
+            margin-right: 35px;
+            margin-top: 80px;
+            img {
+                width: 100px;
+                height: 100px;
+            }
+            .entryDes {
+                margin-top: @normalMargin;
+                .hxBold;
+            }
+        }
+    }
+}
+

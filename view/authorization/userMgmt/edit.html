@@ -1,0 +1,88 @@
+<div>
+    <div class="hxBold hxMd item" id="bc">编辑用户</div>
+    <div class="hxPlate hxForm item" relative-to="#homeClientDetail" offset="40" container="#homeClientDetail">
+        <div class="hxItem">
+            <div class="cname" style="width:30%"><span style="color:red;margin-right: 5px;">*</span>用户名</div>
+            <div class="cinput">
+                <input disabled ng-model="userInfo.userName" maxlength="20" class="hxInput textControl" type="text" placeholder="用户名"
+                       style="width: 90%">
+            </div>
+            <div style="clear:both"></div>
+        </div>
+        <div class="hxItem">
+            <div class="cname" style="width:30%"><span style="color:red;margin-right: 5px;">*</span>姓名</div>
+            <div class="cinput ">
+                <input ng-model="userInfo.displayName" class="hxInput textControl" type="text" placeholder="请输入姓名" style="width: 90%">
+            </div>
+        </div>
+        <div class="hxItem">
+            <div class="cname" style="width:30%"><span style="color:red;margin-right: 5px;">*</span>邮箱</div>
+            <div class="cinput ">
+                <input ng-model="userInfo.email" class="hxInput textControl" type="text" placeholder="请输入邮箱" style="width: 90%">
+            </div>
+        </div>
+        <div class="hxItem">
+            <div class="cname" style="width:30%">岗位</div>
+            <div class="cinput">
+                <div class="hxInput textControl" style="position: relative; width: 90%;">
+                    <div ng-class="{'tag-input-empty':selectedPostsMap.isEmpty(),'tag-input-not-empty':!selectedPostsMap.isEmpty()}">
+                        <deletable-tag is-deleteable="true" tag-margin-left="7px" tag-margin-top="3px" tag-padding="0px 15px"
+                                       selected-map="selectedPostsMap">
+                        </deletable-tag>
+                        <div id="postPopupIcon" ng-click="popPostDialog()"
+                             style="float:right;position: absolute; top:5px; right:5px;height: 20px;width: 20px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hxItem">
+            <div class="cname" style="width:30%">部门</div>
+            <div class="cinput ">
+                <div class="hxInput textControl" style="position: relative; width: 90%;">
+                    <div ng-class="{'tag-input-empty':selectedDepartMap.isEmpty(),'tag-input-not-empty':!selectedDepartMap.isEmpty()}">
+                        <deletable-tag is-deleteable="true" tag-margin-left="7px" tag-margin-top="3px" tag-padding="0px 15px"
+                                       selected-map="selectedDepartMap">
+                        </deletable-tag>
+                        <!--<input class="hxInput textControl" ng-model="userInfo.department.name" type="text" style="width: 90%">-->
+                        <div id="departPopupIcon" ng-click="popDepartDialog()"
+                             style="float:right;position: absolute; top:5px; right:5px;height: 20px;width: 20px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hxItem">
+            <div class="cname" style="width:30%">角色</div>
+            <div class="cinput">
+                <div class="hxInput textControl" style="position: relative; width: 90%;">
+                    <div ng-class="{'tag-input-empty':selectedRolesMap.isEmpty(),'tag-input-not-empty':!selectedRolesMap.isEmpty()}">
+                        <deletable-tag is-deleteable="true" tag-margin-left="7px" tag-margin-top="3px" tag-padding="0px 15px"
+                                       selected-map="selectedRolesMap">
+                        </deletable-tag>
+                        <div id="rolePopupIcon" ng-click="popRoleDialog()"
+                             style="float:right;position: absolute; top:5px; right:5px;height: 20px;width: 20px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <popup id="userMgmt-popup" show="popupShow" ptitle={{popupTitle}}>
+        <select-posts-popup ng-if="popupType == 'org'" organizations="userInfo.organizations" org-data="orgData1" selected-map="selectedPostsMap"
+                            selected-map-copy="selectedPostsMapCopy" on-close="onClose(flag)">
+        </select-posts-popup>
+        <select-depart-popup ng-if="popupType == 'depart'" org-data="orgData2" selected-map="selectedDepartMap"
+                             selected-map-copy="selectedDepartMapCopy" on-close="onClose(flag)">
+        </select-depart-popup>
+        <select-roles-popup ng-if="popupType == 'role'" datalist="roles" selected-map="selectedRolesMap" selected-map-copy="selectedRolesMapCopy"
+                            on-close="onClose(flag)">
+        </select-roles-popup>
+    </popup>
+
+    <div class="foot" style="margin-top: 15px;margin-bottom:20px;text-align: center">
+        <button class="hxButton backgroundYellow hxWhite" style="margin-right:10px" ng-click="save()">保 存</button>
+        <button class="hxButton" style="background:transparent" ng-click="cancel()">取 消</button>
+    </div>
+</div>

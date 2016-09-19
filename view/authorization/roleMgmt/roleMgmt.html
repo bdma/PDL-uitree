@@ -1,0 +1,316 @@
+<div class="prodKernelList">
+    <div class="listBody">
+        <div class="listTitle">
+            <div class="title">
+                角色列表
+            </div>
+            <span style="line-height: 3;font-size: 1.5rem;">(共{{rolesSum}}个角色)</span>
+        </div>
+        <div class="hxTable qhhalf" style="padding-right: 20px;border-right: 1px solid #ccc;">
+            <table-header columns="roleColumns" on-click="onAddRole($columnIndex)" on-search="onRoleSearch($condtions,$columnIndex)">
+            </table-header>
+            <div class="hxTRow" ng-repeat="role in roles track by $index" ng-class='{"qhcheckedrow":$index == selectedIndex}' ng-click="cleckedRow(role,$index)">
+                <div class="hxCell hxBlue hand" style="width:20%">
+                    <div>
+                        {{role.tag}}
+                    </div>
+                </div>
+                <div class="hxCell hxBlue hand" style="width:30%">
+                    <div>
+                        {{role.roleName}}
+                    </div>
+                </div>
+                <div class="hxCell hxBlue hand" style="width:25%">
+                    <div>
+                        <span ng-if="role.type==0">用户角色</span>
+                        <span ng-if="role.type==1">岗位角色</span>
+                    </div>
+                </div>
+                <div class="hxCell" style="width:25%">
+                    <a ng-click="editRole(role)" class="qhlinkbtn">
+                        <img src="./asset/image/contact_edit.png" alt="">
+                    </a>
+                    <a ng-click="deleteRole(role.roleId)" class="qhlinkbtn">
+                        <img src="./asset/image/contact_delete.png" alt="">
+                    </a>
+                </div>
+            </div>
+            <!--列表分页-->
+            <div class="loadMore" ng-if="hasMore">
+                <a href="" ng-click="loadMoreRole()" style="width: 40%;">
+                    <span class="span1"></span>
+                    <span class="span2"></span>
+                    <span class="span3"></span> 加载更多信息
+                </a>
+            </div>
+            <div class="loadMore" ng-if="!hasMore">
+                <a href="" style="cursor:default;width: 40%;">
+                    <span class="span1"></span>
+                    <span class="span2"></span>
+                    <span class="span3"></span> 没有更多信息啦
+                </a>
+            </div>
+        </div>
+        <div class="qhhalf">
+            <ul>
+                <li class="btn" ng-class='{"btn_active":toggle=="roleUser"}' ng-click="goRoleUser()">
+                    <span ng-if="typeTag==0">关联用户</span>
+                    <span ng-if="typeTag==1">关联岗位</span>
+                </li>
+                <!-- <li class="btn" ng-class='{"btn_active":toggle=="roleJob"}' ng-click="goRoleJob()"> 关联岗位
+                </li> -->
+                <li class="btn" ng-class='{"btn_active":toggle=="roleFnt"}' ng-click="goRoleFnt()">
+                    功能权限
+                </li>
+                <li class="btn" ng-class='{"btn_active":toggle=="roleData"}' ng-click="goRoleData()">
+                    数据权限
+                </li>
+            </ul>
+            <!-- ==========用户============== -->
+            <div ng-if="toggle=='roleUser'" style="margin: 60px 0 0 25px;">
+                <div ng-if="typeTag==0">
+                    <div style="margin-left: 80%;margin-bottom: 20px;line-height: 17px;cursor: pointer;" ng-click="bindRoleUser()">
+                        <img class="icon" src="./asset/image/contact_new.png"> 绑定
+                    </div>
+                    <div ng-repeat="user in users track by $index" class="qhlaberbtndiv">
+                        <div class="qhlaberbtn">
+                            {{user.displayName}}
+                        </div>
+                        <!-- <img src="./asset/image/close.png" class="qhlaber" ng-class='{"qhlaberbtnclick":user.userClick == "clicked"}'> -->
+                        <!-- <span class="qhlaberbtn" ng-class='{"qhlaberbtnclick":true}' ng-click="dealRoleUser(user)">{{user.displayName}}</span> -->
+                    </div>
+                </div>
+                <div ng-if="typeTag==1">
+                    <div style="margin-left: 80%;margin-bottom: 20px;line-height: 17px;cursor: pointer;" ng-click="bindRolePosition()">
+                        <img class="icon" src="./asset/image/contact_new.png"> 绑定
+                    </div>
+                    <div ng-repeat="positon in positions track by $index" class="qhlaberbtndiv">
+                        <div class="qhlaberbtn">
+                            {{positon.name}}
+                        </div>
+                        <img src="./asset/image/close.png" class="qhlaber" ng-class='{"qhlaberbtnclick":positon.userClick == "clicked"}'>
+                    </div>
+                </div>
+            </div>
+            <!-- ==============功能权限============== -->
+            <div ng-show="toggle=='roleFnt'">
+                <div style="margin-left: 80%;margin-top: 55px;line-height: 17px;cursor: pointer;" ng-click="addRoleFnt()">
+                    <img class="icon" src="./asset/image/contact_new.png"> 绑定
+                </div>
+                <div style="padding:20px;">
+                    <div ron-carousel carouse='carouse' speed='20' carousel-style="width: 100%;height: 42px;overflow: hidden;left: 0;background: #fff;top: 5px;padding: 0 14px;z-index: 2;">
+                        <a ng-click="selectedApp(app,$index)" ng-class="{active:appCurrent==$index}" ng-repeat="app in tapps">{{app.displayName}}</a>
+                    </div>
+                    <div class="ui-box-body-center" style="padding-top:42px;">
+                        <div style="height:100%; overflow: auto;">
+                            <ui-tree tree-data="appRoleData" conf="appsConf" selected-tree="selectedAppRole0"></ui-tree>
+                        </div>
+                    </div>
+                    <!-- <div class="ui-box-body-btn" style="margin-left: 50%">
+                    <button class="btn btn-primary btn-sm" ng-click="submitAppRole()">
+                        提交
+                    </button>
+                </div> -->
+                </div>
+            </div>
+            <!-- =================数据================= -->
+            <div ng-show="toggle=='roleData'">
+                <div style="margin-left: 80%; margin-top: 55px;line-height: 17px;cursor: pointer;" ng-click="addRoleData()">
+                    <img class="icon" src="./asset/image/contact_new.png"> 绑定
+                </div>
+                <div class="ui-box-body" style="position: relative;">
+                    <div ron-carousel carouse="carouse2" speed='20' carousel-style="position: absolute;width: 97%;height: 42px;overflow: hidden;left: 0;background: #fff;top: 5px;padding: 0 14px;">
+                        <a ng-click="selectedElm($index)" ng-class="{active:current==$index}" ng-repeat="app in apps" ng-if="app.hadShow">{{app.displayName}}</a>
+                    </div>
+                    <div class="ui-box-body-center" style="padding-top:55px;">
+                        <div ng-repeat="app in apps" ng-show="current==$index">
+                            <div class="qhroledatarow">
+                                <div class="qhroledataleft">
+                                    <div>按钮</div>
+                                </div>
+                                <div class="qhroledataright">
+                                    <div style="margin-left: 20px;padding: 3px 1px;float: left;" ng-click="selectElement($parent.$index,$index)" ng-repeat="item in app.elements" ng-if="item.name.substr(0,3)=='btn'" ng-show="item.effect==1">
+                                        {{item.displayName}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qhroledatarow">
+                                <div class="qhroledataleft">
+                                    <div>区域</div>
+                                </div>
+                                <div class="qhroledataright">
+                                    <div style="margin-left: 20px;padding: 3px 1px;float: left;" ng-click="selectElement($parent.$index,$index)" ng-repeat="item in app.elements" ng-if="item.name.substr(0,3)=='div'" ng-show="item.effect==1">
+                                        {{item.displayName}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="qhroledatarow">
+                                <div class="qhroledataleft">
+                                    <div>字段</div>
+                                </div>
+                                <div class="qhroledataright">
+                                    <div style="margin-left: 20px;padding: 3px 1px;float: left;" ng-click="selectElement($parent.$index,$index)" ng-repeat="item in app.elements" ng-if="item.name.substr(0,4)=='attr'" ng-show="item.effect==1">
+                                        <!-- <div ng-class="{uiTreeCheck:true,uiTreeUnChecked:item.effect == 0, uiTreeCheckedAll:item.effect==1}" style="margin-top: 1px"></div> -->
+                                        {{item.displayName}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="ui-box-body-btn" style="margin-left: 45%;">
+                    <button class="btn btn-primary btn-sm btn-submit-orange" ng-click="submitUIElements()">提交</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<popup show="popup_show" ptitle={{popupTitle}}>
+    <div ng-if="editRoleShow">
+        <div class="qhinputrole">
+            标签：
+            <input type='text' class='qhinputroleid' placeholder="请输入标签" maxlength="20" autofocus="autofocus" ng-model="addrole.tag">
+        </div>
+        <div class="qhinputrole">
+            角色：
+            <input type='text' class='qhinputrolename' placeholder="请输入角色名" maxlength="20" ng-model="addrole.roleName">
+        </div>
+        <div class="qhinputrole">
+            类型：
+            <select name="singleSelect" ng-model="addrole.type" ng-options='option.value as option.name for option in options' ng-if="addRoleShow">
+            </select>
+            <div ng-if="!addRoleShow" style="display: inline-block;">
+                <span ng-if="addrole.type==0">用户角色</span>
+                <span ng-if="addrole.type==1">岗位角色</span>
+            </div>
+        </div>
+        <footer style="position: absolute;bottom: 0;text-align: center;background: #f1f1f1;border-top: 1px solid #dcdcdc;width: 100%;">
+            <a class="qhsubrole" ng-click="subAddRole()" ng-if="addRoleShow" style="background-color:#f0ad4e">添加</a>
+            <a class="qhsubrole" ng-click="subEditRole()" ng-if="!addRoleShow" style="background-color:#f0ad4e">保存</a>
+            <a class="qhsubrole" ng-click="casAddUser()" ng-if="addRoleShow" style="background-color:#transparent;color:#3BC0C3">取消</a>
+            <a class="qhsubrole" ng-click="casEditUser()" ng-if="!addRoleShow" style="background-color:#transparent;color:#3BC0C3">取消</a>
+        </footer>
+    </div>
+    <div ng-if="updateUserShow" style="width:100%;height:100%;position:relative">
+        <div ng-if="typeTag==0">
+            <div style="padding-left:20px;top:0px;bottom:50px;width:100%;overflow:auto;position:absolute">
+                <div class="qhhalf">
+                    <div class="search" style="margin: 0 0 20px 20px;border: 1px solid #ccc;height: 30px;line-height: 20px;">
+                        <input type="text" placeholder="请输入角色名" ng-model="search.RoleName" ng-keypress="keypressEnter($event)">
+                        <img src="./asset/image/icon_project_search_big.png" alt="" ng-click="getEntireUsers(search.RoleName)">
+                    </div>
+                    <div ng-repeat="entuser in entusers track by $index" ng-click="clickEntUser(entuser)" class="qhlaberbtndiv">
+                        <div class="qhlaberbtn">
+                            {{entuser.displayName}}</div>
+                        <img src="./asset/image/check.png" class="qhlaber" ng-class='{"qhlaberbtnclick":entuser.addUserClick == "clicked"}'>
+                    </div>
+                </div>
+                <div class="qhhalf">
+                    <span style="display: block;font-weight: 400;font-size: 1.5rem;margin: 0 0 25px;">已绑定员工</span>
+                    <div ng-repeat="user in InUsers track by $index" ng-click="dealRoleUserIn(user)" class="qhlaberbtndiv" ng-mouseover='user.userClick="clicked"' ng-mouseleave='user.userClick=null'>
+                        <div class="qhlaberbtn">
+                            {{user.displayName}}</div>
+                        <img src="./asset/image/close.png" class="qhlaber" ng-class='{"qhlaberbtnclick":user.userClick == "clicked"}'>
+                    </div>
+                </div>
+            </div>
+            <footer style="height:50px;bottom:0px;width:100%;position:absolute;text-align:center;border-width:1px 0px 0px;background: #f1f1f1;">
+                <a class="qhsubrole" ng-click="subBindUser()" style="background-color:#f0ad4e">确定</a>
+                <a class="qhsubrole" ng-click="casBindUser()" style="background-color:#transparent;color:#3BC0C3">取消</a>
+            </footer>
+        </div>
+        <div ng-if="typeTag==1">
+            <div style="padding-left:20px;top:0px;bottom:50px;width:100%;overflow:auto;position:absolute">
+                <div class="qhhalf">
+                    <div class="ui-box ui-box-btn">
+                        <div class="ui-box-head" style="line-height:18px;"><span class="text_span active" ng-click="openOrgTree($event)">全部展开</span><span class="text_span" ng-click="closeOrgTree($event)">全部闭合</span></div>
+                        <div class="ui-box-body">
+                            <div class="ui-box-body-center">
+                                <ui-tree tree-data="orgData" conf="orgConf" clickitem="clickOrg(item)" selected-tree="selectedOrg"></ui-tree>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="qhhalf">
+                    <span style="display: block;font-weight: 400;font-size: 1.5rem;margin: 0 0 25px;">已绑定岗位</span>
+                    <div ng-repeat="positon in InPositions track by $index" class="qhlaberbtndiv" ng-click="dealPosition(positon)" ng-mouseover='positon.userClick="clicked"' ng-mouseleave='positon.userClick=null'>
+                        <div class="qhlaberbtn">
+                            {{positon.name}}
+                        </div>
+                        <img src="./asset/image/close.png" class="qhlaber" ng-class='{"qhlaberbtnclick":positon.userClick == "clicked"}'>
+                    </div>
+                </div>
+            </div>
+            <footer style="height:50px;bottom:0px;width:100%;position:absolute;text-align:center;border-width:1px 0px 0px;background: #f1f1f1;">
+                <a class="qhsubrole" ng-click="subBindPosition()" style="background-color:#f0ad4e">确定</a>
+                <a class="qhsubrole" ng-click="casBindPosition()" style="background-color:#transparent;color:#3BC0C3">取消</a>
+            </footer>
+        </div>
+    </div>
+    <!-- ==============功能权限============== -->
+    <div ng-show="roleFntShow" style="width:100%;height:100%;position:relative">
+        <div style="padding-left:20px;top:0px;bottom:50px;width:100%;overflow:auto;position:absolute">
+            <div ron-carousel carouse='carouse' speed='20' carousel-style="position: absolute;width: 100%;height: 42px;overflow: hidden;left: 0;background: #fff;top: 5px;padding: 0 14px;z-index: 9;">
+                <a ng-click="selectedApp2(app,$index)" ng-class="{active:appCurrent2==$index}" ng-repeat="app in tapps">{{app.displayName}}</a>
+            </div>
+            <div class="ui-box-body-center" style="padding-top:42px;">
+                <div style="height:100%; overflow: auto;">
+                    <ui-tree tree-data="appRoleData2" conf="appsConf2" selected-tree="selectedAppRole"></ui-tree>
+                </div>
+            </div>
+        </div>
+        <footer style="height:50px;bottom:0px;width:100%;position:absolute;text-align:center;border-width:1px 0px 0px;background: #f1f1f1;">
+            <a class="qhsubrole" ng-click="submitAppRole()" style="background-color:#f0ad4e">提交</a>
+            <a class="qhsubrole" ng-click="cansmitAppRole()" style="background-color:#transparent;color:#3BC0C3">取消</a>
+        </footer>
+    </div>
+    <!-- ================数据权限============= -->
+    <div ng-show="roleDataShow" style="width:100%;height:100%;position:relative">
+        <div class="ui-box-body" style="padding-left:20px;top:0px;bottom:50px;width:100%;overflow:auto;position:absolute">
+            <div ron-carousel carouse="carouse" speed='20' carousel-style="position: absolute;width: 97%;height: 42px;overflow: hidden;left: 0;background: #fff;top: 5px;padding: 0 14px;">
+                <a ng-click="selectedElm($index)" ng-class="{active:current==$index}" ng-repeat="app in apps">{{app.displayName}}</a>
+            </div>
+            <div class="ui-box-body-center" style="padding-top:55px;">
+                <div ng-repeat="app in apps" ng-show="current==$index">
+                    <div class="qhroledatarow">
+                        <div class="qhroledataleft">
+                            <div>按钮</div>
+                        </div>
+                        <div class="qhroledataright">
+                            <div style="margin-left: 20px; padding: 3px 1px;float: left;" ng-click="selectElement(current,item)" ng-repeat="item in app.elements" ng-if="item.name.substr(0,3)=='btn'">
+                                <div ng-class="{uiTreeCheck:true,uiTreeUnChecked:item.effect == 0, uiTreeCheckedAll:item.effect==1}" style="margin-top: 1px"></div>
+                                {{item.displayName}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qhroledatarow">
+                        <div class="qhroledataleft">
+                            <div>区域</div>
+                        </div>
+                        <div class="qhroledataright">
+                            <div style="margin-left: 20px; padding: 3px 1px;float: left;" ng-click="selectElement(current,item)" ng-repeat="item in app.elements" ng-if="item.name.substr(0,3)=='div'">
+                                <div ng-class="{uiTreeCheck:true,uiTreeUnChecked:item.effect == 0, uiTreeCheckedAll:item.effect==1}" style="margin-top: 1px"></div>
+                                {{item.displayName}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qhroledatarow">
+                        <div class="qhroledataleft">
+                            <div>字段</div>
+                        </div>
+                        <div class="qhroledataright">
+                            <div style="margin-left: 20px; padding: 3px 1px;float: left;" ng-click="selectElement(current,item)" ng-repeat="item in app.elements" ng-if="item.name.substr(0,4)=='attr'">
+                                <div ng-class="{uiTreeCheck:true,uiTreeUnChecked:item.effect == 0, uiTreeCheckedAll:item.effect==1}" style="margin-top: 1px"></div>
+                                {{item.displayName}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer style="height:50px;bottom:0px;width:100%;position:absolute;text-align:center;border-width:1px 0px 0px;background: #f1f1f1;">
+            <a class="qhsubrole" ng-click="submitUIElements()" style="background-color:#f0ad4e">提交</a>
+            <a class="qhsubrole" ng-click="cansmitUIElements()" style="background-color:#transparent;color:#3BC0C3">取消</a>
+        </footer>
+    </div>
+</popup>

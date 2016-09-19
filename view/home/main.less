@@ -1,0 +1,104 @@
+@homeTopbarSearchHeight: 30px;
+@homeTopbarSearchWidth: 200px;
+@homeTopbarSearchSwitchHeight: 36px;
+@homeTopbarSearchSwitchWidth: 76px;
+@searchIconSize: 13px;
+.homeTopbar {
+    .backgroundBlue;
+    height: @homeTopbarContentHeight;
+    overflow: hidden;
+    .logo {
+        height: @homeTopbarContentHeight;
+        float: left;
+        margin-left: @bigMargin+@normalMargin;
+        img {
+            width: @logoWidth;
+            height: @logoHeight;
+            margin-top: (@homeTopbarContentHeight - @logoHeight)/2;
+        }
+    }
+    .searchbar {
+        float: right;
+        height: @homeTopbarContentHeight;
+        margin-right: @normalMargin+@bigMargin;
+        .search {
+            height: @homeTopbarSearchHeight;
+            width: @homeTopbarSearchWidth;
+            overflow: hidden;
+            border-radius: @homeTopbarSearchHeight/2;
+            line-height: @homeTopbarSearchHeight;
+            margin-top: (@homeTopbarContentHeight - @homeTopbarSearchHeight)/2;
+            position: relative;
+            input {
+                height: 100%;
+                width: 100%;
+                border: 0px;
+                box-sizing: border-box;
+                padding: 0px @bigPadding+@smlPadding;
+                &:focus {
+                    outline: none;
+                }
+            }
+            img {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                height: @searchIconSize;
+                margin: (@homeTopbarSearchHeight - @searchIconSize)/2;
+                z-index: @midZIndex;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .searchSwitch {
+        height: @homeTopbarContentHeight;
+        float: right;
+        margin-right: @normalMargin;
+        cursor: pointer;
+        img {
+            margin-top: (@homeTopbarContentHeight - @homeTopbarSearchSwitchHeight)/2;
+            width: @homeTopbarSearchSwitchWidth;
+            height: @homeTopbarSearchSwitchHeight;
+        }
+    }
+    &:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+
+#contain {
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    background-color: #3BC0C3;
+}
+
+#homeMain {
+    position: absolute;
+    top: @homeTopbarContentHeight;
+    left: 0px;
+    right: 0px;
+    bottom: 50px;
+    overflow: auto;
+}
+
+#footer {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    background-color: #EDF0F4;
+
+    img{
+        margin-left:25px;
+        margin-right:25px;
+        vertical-align: middle;
+        margin-top:15px;
+    }
+}

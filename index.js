@@ -3,7 +3,7 @@
  *
  * Description
  */
-angular.module('appModule', [])
+angular.module('appModule',[])
     .controller("roleMgmt", ['$scope', function($scope) {
         //初始化
             $scope.appRoleData = [{

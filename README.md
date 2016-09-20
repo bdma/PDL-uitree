@@ -2,11 +2,11 @@
     <ui-tree tree-data="data" conf="treeConf" clickitem="clickNode(node)" clickitems="clickNodes" selected-tree="selectedNode">
 ## tree-data
 tree-data参数传入原始数据。原始数据规范如下：
-*原始数据必须是一个array数组。
-*数组中存放每个节点的object对象。
-*每个节点中必须有id和pId（parentId）属性，对应节点的结构。
-*节点对象不限制有其他任何类型的属性。
-*节点显示的节点名默认使用节点的name属性，可在conf中配置（具体参照conf中label配置项）。
+- 原始数据必须是一个array数组。
+- 数组中存放每个节点的object对象。
+- 每个节点中必须有id和pId（parentId）属性，对应节点的结构。
+- 节点对象不限制有其他任何类型的属性。
+- 节点显示的节点名默认使用节点的name属性，可在conf中配置（具体参照conf中label配置项）。
 ## conf
 conf参数传入树的配置项Object，包括一些回调函数，conf的具体参数如下：
 ##### multiple
@@ -88,12 +88,12 @@ conf的内置公共方法可以在任何scope域调用，只要能够获取当�
 
 ### 注：
 #### 由于angular没有实现HTML5的拖动事件的NG封装，此组件中内置HTML5中的拖动指令。
-*ng-dragstart
-*ng-dragover
-*ng-drop
-*ng-dragenter
-*ng-dragleave
-*ng-dragend
+- ng-dragstart
+- ng-dragover
+- ng-drop
+- ng-dragenter
+- ng-dragleave
+- ng-dragend
 这些事件指令使用方式同ng-click。具体使用方法请参照HTML5drag拖动。
 #### 指令中的隔离域双向绑定变量clickitems、selected-tree由于是‘=’绑定方式，并且他们的值随着操作随时会变化，请在操作这两个变量时使用数组的操作方法push、splice等方式。勿使用=表达式赋值，这种赋值方式将会解除变量与指令中的变量双向绑定关系。
 #### 树节点对象$uiTreeItem加入私有属性$$parent之后将由于死循环的问题无法深度克隆。请在克隆树节点数据的时候使用传进来之前的数据或者使用angular.toJson()方法去除私有属性。

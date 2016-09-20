@@ -3,108 +3,80 @@
  *
  * Description
  */
-angular.module('appModule',[])
-    .controller("roleMgmt", ['$scope', function($scope) {
-        //初始化
-            $scope.appRoleData = [{
-                id: 1,
-                displayName: "主页",
-                name: "authority",
-                urlName: "entry",
-                resourceURI: "/g1/elements/af/salesmgmt/home/entry",
-            }, {
-                id: 2,
-                displayName: "销售管理",
-                name: "authority_salse",
-                urlName: "projectlisttry",
-                resourceURI: "/g1/elements/af/salesmgmt/home/projectlisttry",
-            }, {
-                id: 4,
-                displayName: "项目管理",
-                name: "authority_projectmgmt",
-                urlName: "projectlist",
-                resourceURI: "/g1/elements/af/salesmgmt/home/accountmain/projectlist",
-            }, {
-                id: 5,
-                displayName: "项目详情",
-                name: "authority_projectdetail",
-                urlName: "projectdetail",
-                resourceURI: "/g1/elements/af/salesmgmt/home/accountmain/projectdetail",
-            }, {
-                id: 6,
-                displayName: "管理方管理",
-                name: "authority_accountmain",
-                urlName: "detail",
-                resourceURI: "/g1/elements/af/salesmgmt/home/accountmain/detail",
-            }, {
-                id: 7,
-                displayName: "客户详情",
-                name: "authority_legalEntityDetail",
-                urlName: "legalEntityDetail",
-                resourceURI: "/g1/elements/af/salesmgmt/home/accountmain/legalEntityDetail",
-            }, {
-                id: 8,
-                displayName: "客户管理",
-                name: "authority_legalEntity",
-                urlName: "legalEntity",
-                resourceURI: "/g1/elements/af/salesmgmt/home/accountmain/legalEntity",
-            }, {
-                id: 9,
-                displayName: "客户沟通管理",
-                name: "authority_cmctlist",
-                urlName: "cmctlist",
-                resourceURI: "/g1/elements/af/salesmgmt/home/accountmain/cmctlist",
-            }, {
-                id: 10,
-                displayName: "规则仓库",
-                name: "authority_reglist",
-                urlName: "reglist",
-                resourceURI: "/g1/elements/af/salesmgmt/home/regmain/reglist",
-            }, {
-                id: 11,
-                displayName: "规则明细",
-                name: "authority_regdetail",
-                urlName: "regdetail",
-                resourceURI: "/g1/elements/af/salesmgmt/home/regmain/regdetail",
-            }, {
-                id: 12,
-                displayName: "产品管理",
-                name: "authority_prodKernelList",
-                urlName: "prodKernelList",
-                resourceURI: "/g1/elements/af/salesmgmt/home/prodKernelList",
-            }, {
-                id: 13,
-                displayName: "产品明细",
-                name: "authority_prodkerneldetail",
-                urlName: "prodkerneldetail",
-                resourceURI: "/g1/elements/af/salesmgmt/home/prodkerneldetail",
-            }, {
-                id: 14,
-                displayName: "单项产品",
-                name: "authority_prodsinglelist",
-                urlName: "prodsinglelist",
-                resourceURI: "/g1/elements/af/salesmgmt/home/prodsinglelist",
-            }, {
-                id: 15,
-                displayName: "单项产品明细",
-                name: "authority_prodSingledetail",
-                urlName: "prodSingledetail",
-                resourceURI: "/g1/elements/af/salesmgmt/home/prodSingledetail",
-            }, {
-                id: 16,
-                displayName: "套餐管理",
-                name: "authority_prodPackageList",
-                urlName: "prodPackageList",
-                resourceURI: "/g1/elements/af/salesmgmt/home/prodPackageList",
-            }, {
-                id: 17,
-                displayName: "套餐明细",
-                name: "authority_prodPackageDetail",
-                urlName: "prodPackageDetail",
-                resourceURI: "/g1/elements/af/salesmgmt/home/prodPackageDetail",
-            }];
-            
+var app = angular.module('app', []);
+app.controller("roleMgmt", ["$scope",
+    function($scope) {
+        $scope.appsConf = {
+            clickSelect: false,
+            multiple: true,
+            multipleType: 'check',
+            isOpen: true,
+            clearStatus: "close",
+        };
 
-       
-    }])
-    
+        $scope.appRoleData = [{
+            id: 1,
+            name: "主页",
+        }, {
+            id: 2,
+            pId: 1,
+            name: "销售管理",
+        }, {
+            id: 4,
+            pId: 1,
+            name: "项目管理",
+        }, {
+            id: 5,
+            pId: 1,
+            name: "项目详情",
+        }, {
+            id: 6,
+            name: "管理方管理",
+        }, {
+            id: 7,
+            pId: 6,
+            name: "客户详情",
+        }, {
+            id: 8,
+            pId: 6,
+            name: "客户管理",
+        }, {
+            id: 9,
+            pId: 6,
+            name: "客户沟通管理",
+        }, {
+            id: 10,
+            pId: 6,
+            name: "规则仓库",
+        }, {
+            id: 11,
+            pId: 6,
+            name: "规则明细",
+        }, {
+            id: 12,
+            pId: 11,
+            name: "产品管理",
+        }, {
+            id: 13,
+            pId: 11,
+            name: "产品明细",
+        }, {
+            id: 14,
+            pId: 11,
+            name: "单项产品",
+        }, {
+            id: 15,
+            pId: 11,
+            name: "单项产品明细",
+        }, {
+            id: 16,
+            pId: 11,
+            name: "套餐管理",
+        }, {
+            id: 17,
+            pId: 11,
+            name: "套餐明细",
+        }];
+
+    }
+]);

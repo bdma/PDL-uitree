@@ -10,19 +10,19 @@ Array.prototype.uiTreeUnique = function(array) {
     }
 }
 Array.prototype.uiTreeUniqueDelete = function(array) {
-    var temp = {};
-    for (var i = 0; i < array.length; i++) {
-        temp[array[i].id] = i;
-    }
-    for (var j = 0; j < this.length; j++) {
-        if (temp[this[j].id] >= 0) {
-            this.splice(j, 1);
-            j--;
+        var temp = {};
+        for (var i = 0; i < array.length; i++) {
+            temp[array[i].id] = i;
+        }
+        for (var j = 0; j < this.length; j++) {
+            if (temp[this[j].id] >= 0) {
+                this.splice(j, 1);
+                j--;
+            }
         }
     }
-}
-angular.module("appModule")
-    .directive("uiTree", function() {
+    // var app = angular.module('app', []);
+app.directive("uiTree", function() {
         return {
             restrict: "E",
             replace: true,
@@ -50,8 +50,8 @@ angular.module("appModule")
                         getTreeLength 获取树节点总数
                     */
             },
-            templateUrl: './component/commonView/uiTree/uiTree.html',
-            controller: ["$scope", "$state", "$compile", 'cloneservice', '$element', function($scope, $state, $compile, cloneservice, $element) {
+            templateUrl: './uiTree/uiTree.html',
+            controller: ["$scope", function($scope) {
                 var confDefault = {
                     clickSelect: true,
                     multiple: false,
@@ -377,8 +377,8 @@ angular.module("appModule")
                     }
                 }
                 $scope.stopPro = function($event) {
-                    $event.stopPropagation();
-                }//多余
+                        $event.stopPropagation();
+                    } //多余
                 $scope.enteradd = function($event) {
                     if ($event.keyCode == 13) {
                         $($event.target).parent().hide().siblings('.uiTreeName').show();

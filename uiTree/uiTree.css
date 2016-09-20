@@ -1,0 +1,128 @@
+.ui-tree {
+  color: #333;
+  font-weight: normal;
+}
+.uiTreeCheck {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  margin-right: 4px;
+  background-size: 100% 100%;
+  vertical-align: top;
+  margin-top: 6px;
+}
+.uiTreeCheck.uiTreeUnChecked {
+  background-image: url(../image/uitree-unchecked.png);
+}
+.uiTreeCheck.uiTreeCheckedAll {
+  background-image: url(../image/uitree-checked.png);
+}
+.uiTreeCheck.uiTreeUnCheckedHalf {
+  background-image: url(../image/uitree-checkedhalf.png);
+}
+.uiTreeCheck.uiTreeUnChecked:active {
+  background-image: url(../image/uitree-uncheckedx.png);
+}
+.uiTreeCheck.uiTreeCheckedAll:active {
+  background-image: url(../image/uitree-checkedx.png);
+}
+.uiTreeCheck.uiTreeUnCheckedHalf:active {
+  background-image: url(../image/uitree-checkedhalfx.png);
+}
+.uiTreeName {
+  position: relative;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 14px;
+  display: inline-block;
+  padding-right: 25px;
+}
+.uiTreeName i {
+  width: 17px;
+  height: 18px;
+  background: url(../image/check.png);
+  display: none;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  margin-top: -9px;
+}
+.uiTreeName.active {
+  color: #3bc0c3;
+  font-weight: bold;
+}
+.uiTreeName.active i {
+  display: block;
+}
+.uiTreeNameEdit {
+  height: 24px;
+}
+li,
+ol,
+ul {
+  list-style: none;
+}
+.ui-tree-root li {
+  line-height: 26px;
+}
+.ui-tree-root li div {
+  display: inline-block;
+}
+.ui-tree-root li div:hover .addChildNode {
+  display: inline-block;
+}
+.ui-tree-root li div:hover .editNode {
+  display: inline-block;
+}
+.ui-tree-root li div:hover .deleteNode {
+  display: inline-block;
+}
+.ui-tree-root,
+.ui-tree-root ul {
+  padding-left: 25px;
+}
+.uiTreeIco2,
+.uiTreeIco1 {
+  width: 19px;
+  height: 18px;
+  display: inline-block;
+  margin-right: 4px;
+  background-size: 100% 100%;
+  vertical-align: top;
+  margin-top: 4px;
+}
+.uiTreeIco1 {
+  background: url(../image/quanxian_tree_last.fw.png) center center no-repeat;
+}
+.uiTreeIco1.active {
+  background: url(../image/quanxian_tree_last_ov.fw.png) center center no-repeat;
+}
+.uiTreeIco2.current {
+  background: url(../image/quanxian_tree_close.fw.png) center center no-repeat;
+}
+.uiTreeIco2 {
+  background: url(../image/quanxian_tree_close_ov.fw.png) center center no-repeat;
+}
+.addChildNode,
+.editNode,
+.deleteNode {
+  display: none;
+  width: 15px;
+  height: 15px;
+  vertical-align: top;
+  margin-top: 6px;
+  margin-right: 4px;
+  cursor: pointer;
+}
+.addChildNode {
+  background: url(../image/contact_new.png) center center no-repeat;
+}
+.editNode {
+  background: url(../image/contact_edit.png) center center no-repeat;
+}
+.deleteNode {
+  background: url(../image/contact_delete.png) center center no-repeat;
+}
+ul.treehide {
+  display: none;
+}

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html ng-app="appModule">
+<html ng-app="app">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>PDL-uitree</title>
-    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./node_modules/angular/angular.js"></script>
-    <script src="./uiTree/uiTree.js"></script>
     <script src="./index.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./uiTree/uiTree.js"></script>
+    <link rel="stylesheet" href="./uiTree/uiTree.css">
 </head>
 
-<body>
-    <div style="padding:42px;"  ng-controller="roleMgmt">
+<body ng-controller="roleMgmt">
+    <div style="padding:42px;" >
         <div style="height:100%; overflow: auto;">
             <ui-tree tree-data="appRoleData" conf="appsConf" selected-tree="selectedAppRole"></ui-tree>
         </div>

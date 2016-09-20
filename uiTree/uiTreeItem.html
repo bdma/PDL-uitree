@@ -9,5 +9,5 @@
             <span class='deleteNode' ng-if='conf.deleteNode' ng-click='deleteNodeFn($uiTreeItem,$index)'></span>
         </div>
         <ul ng-class="{treehide:!$uiTreeItem.$$isOpen}">
-            <li ng-repeat="$uiTreeItem in $uiTreeItem.children track by $index" ng-include="'./component/commonView/uiTree/uiTreeItem.html'" ng-if="$uiTreeItem.$$isShow"></li>
+            <li ng-repeat="$uiTreeItem in $uiTreeItem.children track by $index" ng-include="'./uiTree/uiTreeItem.html'" ng-if="$uiTreeItem.$$isShow"></li>
         </ul>

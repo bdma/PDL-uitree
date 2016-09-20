@@ -6,7 +6,7 @@ tree-data参数传入原始数据。原始数据规范如下：
 - 数组中存放每个节点的object对象。
 - 每个节点中必须有id和pId（parentId）属性，对应节点的结构。
 - 节点对象不限制有其他任何类型的属性。
-- 节点显示的节点名默认使用节点的name属性，可在conf中配置（具体参照conf中label配置项）。
++ 节点显示的节点名默认使用节点的name属性，可在conf中配置（具体参照conf中label配置项）。
 ## conf
 conf参数传入树的配置项Object，包括一些回调函数，conf的具体参数如下：
 ##### multiple

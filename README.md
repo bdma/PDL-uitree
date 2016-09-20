@@ -94,8 +94,10 @@ conf的内置公共方法可以在任何scope域调用，只要能够获取当�
 - ng-drop
 - ng-dragenter
 - ng-dragleave
-- ng-dragend
++ ng-dragend
+
 这些事件指令使用方式同ng-click。具体使用方法请参照HTML5drag拖动。
+
 #### 指令中的隔离域双向绑定变量clickitems、selected-tree由于是‘=’绑定方式，并且他们的值随着操作随时会变化，请在操作这两个变量时使用数组的操作方法push、splice等方式。勿使用=表达式赋值，这种赋值方式将会解除变量与指令中的变量双向绑定关系。
 #### 树节点对象$uiTreeItem加入私有属性$$parent之后将由于死循环的问题无法深度克隆。请在克隆树节点数据的时候使用传进来之前的数据或者使用angular.toJson()方法去除私有属性。
 
